@@ -1,0 +1,11 @@
+1.Medico
+  -Ver Citas(Simplemente vera las citas y marcara la cita completada)
+  -Historial Clinico(podra ver y y modificar el historial pero antes buscara el paciente)
+
+2.Farmacia
+   -Vender y Comprar medicamentos
+
+3.Administracion
+  -Crea Citas(y se lo envia al medico)
+  -Gestiona Horarios
+  -Gestiona Emergencias

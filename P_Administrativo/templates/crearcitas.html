@@ -1,0 +1,14 @@
+{% extends 'base_administrativo.html' %}
+
+{% block content %}
+<h1>Crear Citas</h1>
+
+<form action="POST">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button>
+    Crear Cita
+  </button>
+</form>
+
+{% endblock %}

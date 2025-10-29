@@ -30,9 +30,9 @@ def signin(request):
 
             # Redirigir según los primeros dígitos
            if identificacion.startswith('22'):
-               return redirect('Medico:home_medico')
+               return redirect('medico:home_medico')
            elif identificacion.startswith('33'):
-               return redirect('Administracion:home_administrativo')
+               return redirect('p_administrativo:home_administrativo')
             
 def signup(request):
     if request.method=='GET':
