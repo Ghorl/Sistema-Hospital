@@ -26,6 +26,7 @@ def signin(request):
             })
         else:
             # Iniciar sesión
+           login(request,user)
            identificacion = user.username  # o user.dni si usas un campo personalizado
 
             # Redirigir según los primeros dígitos

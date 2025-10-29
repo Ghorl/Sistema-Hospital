@@ -1,10 +1,25 @@
-<h1>Crear Citas</h1>
-{% for cita in citas %}
+{% extends 'base_medico.html' %}
 
-<article>
-    <a href="">
-        <h1>{{cita.N_Paciente}}</h1>
-    </a>
-</article>
-
-{% endfor %}
+{% block content %}
+<h2>Pacientes con Cita Asignada</h2>
+{% if citas %}
+<table border="1">
+  <tr>
+    <th>Paciente</th>
+    <th>Fecha</th>
+    <th>Acción</th>
+  </tr>
+  {% for cita in citas %}
+  <tr>
+    <td>{{ cita.paciente }}</td>
+    <td>{{ cita.fecha|date:"d/m/Y H:i" }}</td>
+    <td>
+      <a href="{% url 'medico:detallescita' cita.id %}">Ver Detalle</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>No tienes citas asignadas actualmente.</p>
+{% endif %}
+{% endblock %}

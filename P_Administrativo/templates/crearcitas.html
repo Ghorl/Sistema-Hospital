@@ -3,12 +3,9 @@
 {% block content %}
 <h1>Crear Citas</h1>
 
-<form action="POST">
-  {% csrf_token %}
-  {{form.as_p}}
-  <button>
-    Crear Cita
-  </button>
+<form action="{% url 'p_administrativo:crear_citas' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Crear Cita</button>
 </form>
-
 {% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base_medico.html' %}
+{% block content %}
+<h2>Detalles de la Cita</h2>
+
+<p><strong>Paciente:</strong> {{ cita.paciente }}</p>
+<p><strong>DNI:</strong> {{ cita.dni_paciente }}</p>
+<p><strong>Descripción:</strong> {{ cita.descripcion }}</p>
+<p><strong>Fecha:</strong> {{ cita.fecha|date:"d/m/Y H:i" }}</p>
+
+<a href="{% url 'medico:vercitas' %}">← Volver a la lista</a>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import CreateNewCita
 from .models import CrearCita
+from Medico.models import Medico
 
 # Create your views here.
 def Home(request):
@@ -13,25 +14,16 @@ def view_CrearCitas(request):
             'form': CreateNewCita()
         })
     else:
-        # Cargar el formulario con los datos enviados
-        form = CreateNewCita(request.POST)
-        
-        if form.is_valid():
-            medico = form.cleaned_data['Medico']
-            CrearCita.objects.create(
-                medico=medico,
-                paciente=f"{form.cleaned_data['N_Paciente']} {form.cleaned_data['A_Paciente']}",
-                dni_paciente=form.cleaned_data['DNI_Paciente'],
-                descripcion=form.cleaned_data['Descripcion'],
-                fecha=form.cleaned_data['Fecha']
-            )
-            # Redirige al mismo formulario o a home, como prefieras
-            return redirect('P_Administrativo:crear_citas')
-        else:
-            # Si hay errores, vuelve a mostrar el formulario con los mensajes
-            return render(request, 'crearcitas.html', {
-                'form': form
-            })
+        medio_id=request.POST.get('Medico')
+        medico=Medico.objects.get(id=medio_id)
+        CrearCita.objects.create(
+            medico=medico,
+            paciente=f"{request.POST['N_Paciente']} {request.POST['A_Paciente']}",
+            dni_paciente=request.POST['DNI_Paciente'],
+            descripcion=request.POST['Descripcion'],
+            fecha=request.POST['Fecha']
+        )
+        return redirect('p_administrativo:crear_citas')
 
        
        
